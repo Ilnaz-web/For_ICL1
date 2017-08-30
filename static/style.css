@@ -1,0 +1,16 @@
+body {
+    background-color: beige;
+}
+
+h1 {
+    color: blue;
+    text-align: center;
+}
+
+ .myform {
+     padding-top: 10px;
+ }
+
+ .mytitle {
+     font-size: 17px;
+ }

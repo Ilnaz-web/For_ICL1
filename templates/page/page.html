@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Страница</title>
+
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="{% static 'angular.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'chart.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'main.js' %}"></script>
+    <script type="text/javascript" src="{% static 'angular-chart.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'chart.js' %}"></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</head>
+
+<body ng-app="main_app">
+
+    <div class="container top-container" ng-controller="main_app_controller">
+            <div class="row">
+                <div class="col-lg-4 col-lg-offset-4">
+                    <h1 class="title">Добро пожаловать!</h1>
+                    <h1 class="title mytitle">Загрузите файл Excel</h1>
+
+                    <div class="col-lg-offset-2 myform">
+                        <form enctype="multipart/form-data" method="post" ng-submit="OnSubmit()">{% csrf_token %}
+                        <div class="form-group">
+                            <label for="">Имя файла:</label>
+                            <input type="text" maxlength="80" id="name" name="name" ng-model="name">
+                        </div>
+                        <div class="form-group">
+                            <input type="file" id="file" name="file" ng-model="forminput" onchange="angular.element(this).scope().upload(this)">
+                        </div>
+                        <div class="col-lg-offset-6">
+                            <input type="submit" class="btn btn-primary">
+                        </div>
+                        </form>
+                    </div>
+                    <p>Принятые данные: {&str&}</p>
+
+                </div>
+                <div class="col-lg-6 col-lg-offset-3" id="curve_chart" style="width: 700px; height: 400px"></div>
+            </div>
+        </div>
+
+
+</body>
+</html>
